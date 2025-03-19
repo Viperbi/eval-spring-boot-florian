@@ -25,6 +25,18 @@ public class Produit {
     @Positive(message = "Le prix du produit doit être positif")
     private double prix;
 
+    @ManyToOne
+    @JoinColumn(name = "categorie_id")
+    private Categorie categorie;
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+
     public Produit() {}
 
     public Produit(String nom, double prix) {
