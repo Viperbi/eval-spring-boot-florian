@@ -15,19 +15,19 @@ public class CategorieService {
     @Autowired
     private CategorieRepository categorieRepository;
 
-    public Iterable<Categorie> findAll() {
+    public Iterable<Categorie> findAllCategorie() {
         if(categorieRepository.count() == 0) {
             throw new NoCategorieFoundException();
         }
         return categorieRepository.findAll();
     }
 
-    public Optional<Categorie> findById(long id) {
+    public Optional<Categorie> findByIdCat(long id) {
         return categorieRepository.findById(id);
     }
 
-    public Categorie save(Categorie categorie) {
-        if(categorieRepository.findByLibelle(categorie.getLibelle()) != null) {
+    public Categorie saveCategorie(Categorie categorie) {
+        if(categorieRepository.findByLibelle(categorie.getLibelle()).isPresent()) {
             throw new SaveCategorieException(categorie);
         }
         return categorieRepository.save(categorie);

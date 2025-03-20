@@ -26,8 +26,8 @@ public class ProduitController {
         return produitService.findById(id);
     }
 
-    @PostMapping("/produit/save")
-    public Produit saveProduit(@Valid @RequestBody Produit produit) {
+    @PostMapping("/produit")
+    public Produit addProduit(@Valid @RequestBody Produit produit) {
         return produitService.save(produit);
     }
 
